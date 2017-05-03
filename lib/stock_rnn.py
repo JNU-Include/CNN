@@ -36,22 +36,22 @@ class StockRNN:
     def create_simple_rnn_layer(self, output_dim):
         # create_rnn_layer(output_dim)
         cell = tf.contrib.rnn.BasicLSTMCell(num_units=self.output_dim, state_is_tuple=True)
-        outputs, _states = tf.nn.dynamic_rnn(cell, self.X, dtype=tf.float32)
-        print(outputs)
-        Y_pred = outputs[:, -1]  # 1개짜리 7개 중 가장 마지막 1개짜리를 출력으로 선택함.
-        return Y_pred
+        outputs, _states = tf.nn.dynamic_rnn(cell, self.X, dtype=tf.float32) #X shape=(?, 7, 5)
+        #print(outputs)
+        pred = outputs[:, -1]  # 1개짜리 7개 중 가장 마지막 1개짜리를 출력으로 선택함.
+        return pred
 
     def create_multi_rnn_softmax_layer(self):
         cell = tf.contrib.rnn.BasicLSTMCell(num_units=self.output_dim, state_is_tuple=True)  #output_dim = 3
         cell = tf.contrib.rnn.MultiRNNCell([cell] * 2, state_is_tuple=True)
         outputs, _states = tf.nn.dynamic_rnn(cell, self.X, dtype=tf.float32) #shape of X = (?, 7, 5)
-        #print('output', outputs) # 3개짜리 출력이 seq_length(7)만큼 나옴
-        last_output = outputs[:, -1]  # 3개짜리 7개 중 가장 마지막 3개짜리를 출력으로 선택함. shape=(?, 3)
+        #print('output', outputs) # 위 output_dim이 3일 때 3차원 출력이 seq_length(7)만큼 나옴
+        last_output = outputs[:, -1]  # 3차원 출력 7개 중 가장 마지막 3차원 출력을 최종 출력으로 선택함. last_output shape=(?, 3)
 
         # Softmax layer (rnn_hidden_size -> num_classes)
-        softmax_w = tf.get_variable("softmax_w", [self.output_dim, 1])
-        softmax_b = tf.get_variable("softmax_b", [1])
-        Y_pred = tf.matmul(last_output,  softmax_w) + softmax_b  # 3 *
+        W = tf.get_variable("softmax_w", [self.output_dim, 1])
+        b = tf.get_variable("softmax_b", [1])
+        Y_pred = tf.matmul(last_output,  W) + b  # 3 *
         #print(Y_pred, last_output, softmax_w)
 
         return Y_pred # (?, 1).. 결국 (1, 7, 5) 데이터가 들어가면 (1, 1) 데이터가 출력됨.
@@ -95,7 +95,7 @@ class StockRNN:
     def predict(self, testX, testY):
         # RMSE
         predY = self.sess.run(self.hypothesis, feed_dict={self.X: testX})
-        rmse = tf.sqrt(tf.reduce_mean(tf.square(testY - predY)))
+        rmse = tf.sqrt(tf.reduce_mean(tf.square(testY - predY))) # 차의 제곱의 평균의 sqrt
         print("RMSE", self.sess.run(rmse))
 
         plt.plot(testY)  # 실제
