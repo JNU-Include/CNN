@@ -80,8 +80,8 @@
       <file leaf-file-name="mnist_cnn_deep.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CNN_MH/mnist_cnn_deep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state relative-caret-position="551">
+              <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -166,8 +166,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="657" />
-    <option name="y" value="25" />
+    <option name="x" value="678" />
+    <option name="y" value="23" />
     <option name="width" value="1023" />
     <option name="height" value="962" />
   </component>
@@ -653,7 +653,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="657" y="25" width="1023" height="962" extended-state="0" />
+    <frame x="678" y="23" width="1023" height="962" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31702346" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1065,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CNN_MH/mnist_cnn_deep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="551">
+          <caret line="69" column="0" lean-forward="true" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
